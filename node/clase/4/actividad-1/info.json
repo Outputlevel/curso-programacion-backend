@@ -1,0 +1,15 @@
+{
+	"contenidoStr": "{\n  \"name\": \"actividad-1\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"app.js\",\n  \"scripts\": {\n    \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n  },\n  \"author\": \"Joaquin Cejas\",\n  \"license\": \"ISC\"\n}\n",
+	"contenidoObj": {
+		"name": "actividad-1",
+		"version": "1.0.0",
+		"description": "",
+		"main": "app.js",
+		"scripts": {
+			"test": "echo \"Error: no test specified\" && exit 1"
+		},
+		"author": "Joaquin Cejas",
+		"license": "ISC"
+	},
+	"size": 218
+}
