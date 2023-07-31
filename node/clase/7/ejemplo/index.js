@@ -13,7 +13,8 @@ app.get('/api/users', async (req, res) => {
 });
 
 app.get('/api/users/:Id', async (req, res) => {
-    res.send(await UM.GetUserByID(req.params.Id));
+    const response = await UM.GetUserByID(req.params.Id)
+    res.status(response.code).send(response);
 });
 
 app.post('/api/users', async (req, res) => {
@@ -25,7 +26,8 @@ app.put('/api/users/:Id', async (req, res) => {
 });
 
 app.delete('/api/users/:Id', async (req, res) => {
-    res.send(await UM.DeleteUserByID(req.params.Id));
+    const response = await UM.DeleteUserByID(req.params.Id);
+    res.status(response.code).send(response);
 });
 
 const PORT = 8080;

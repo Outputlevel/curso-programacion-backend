@@ -23,11 +23,15 @@ class UserManager {
 
         for (let key in users) {
             if (users[key].Id == Id) {
-                return users[key];
+                return {
+                    code: 200,
+                    user: users[key]
+                };
             }
         }
 
         return {
+            code: 400,
             message: `El usuario ${Id} no existe!`
         };
     }
@@ -106,10 +110,12 @@ class UserManager {
             await fs.promises.writeFile(this.file, JSON.stringify(usersProcessed, null, "\t"));
 
             return {
+                code: 200,
                 message : `El usuario ${Id} fue eliminado correctamente`
             };
         } catch(e) {
             return {
+                code: 400,
                 message: e.message
             };
         }

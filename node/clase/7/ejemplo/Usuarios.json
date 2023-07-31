@@ -6,18 +6,6 @@
 		"Age": 29
 	},
 	{
-		"Id": 3,
-		"Name": "Fabio",
-		"LastName": "Arias",
-		"Age": 30
-	},
-	{
-		"Id": 4,
-		"Name": "Ricardo",
-		"LastName": "Martinez",
-		"Age": 21
-	},
-	{
 		"Id": 5,
 		"Name": "Coder",
 		"LastName": "House",
