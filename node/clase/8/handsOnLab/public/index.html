@@ -15,14 +15,21 @@
             .box {
                 display: flex;
                 justify-content: center;
-                align-items: center;
                 margin-top: 10%;
             }
         </style>
     </head>
     <body>
+        <h1>Pets</h1>
         <div class="box">
-            <h1>Bienvenidos Coders</h1>
+            <br><br>
+            <form action="http://localhost:8080/api/pets" method="post">
+                <label>Name</label><br>
+                <input type="text" name="name" id="name" /><br>
+                <label>Species</label><br>
+                <input type="text" name="species" /><br>
+                <input type="submit" value="Enviar" />
+            </form>
         </div>
     </body>
 
