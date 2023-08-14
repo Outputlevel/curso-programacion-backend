@@ -33,5 +33,10 @@ io.on('connection', socket => {
     socket.on('message', data => {
         messages.push(data);
         io.emit('messagesLogs', messages);
+    });
+
+    socket.on('userConnect', data => {
+        socket.emit('messagesLogs', messages);
+        socket.broadcast.emit('newUser', data);
     })
 });

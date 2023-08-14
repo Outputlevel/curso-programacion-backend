@@ -13,6 +13,8 @@ Swal.fire({
     allowOutsideClick: false
 }).then(result => {
     user = result.value
+
+    socket.emit('userConnect', result.value);
 });
 
 chatBox.addEventListener('keypress', e => {
@@ -37,3 +39,11 @@ socket.on('messagesLogs', data => {
 
     log.innerHTML = messages;
 })
+
+socket.on('newUser', data => {
+    Swal.fire({
+        text: `${data} se ha unido al chat`,
+        toast: true,
+        position: 'top-right'
+    });
+});
