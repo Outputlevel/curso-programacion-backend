@@ -1,0 +1,20 @@
+<div class="box">
+    <form action="http://localhost:8080/executeQuery" method="POST">
+        <label>DataBase</label>
+        <input type="text" name="dataBase" id="dataBase" placeholder="Insert Data Base" value="{{dataBase}}"/>
+        
+        <label>Collection</label>
+        <input type="text" name="collection" id="collection" placeholder="Insert Collection" value="{{collection}}"/>
+        
+        <label>Query</label>
+        <input type="text" name="query" id="query" placeholder="Insert Query" value="{{query}}"/>
+        
+        <button>Execute Query</button>
+    </form>
+    <hr>
+    <div class="result">
+        <textarea rows="15" cols="70">{{result}}</textarea>
+    </div>
+</div>
+
+<script src="/js/index.js"></script>
