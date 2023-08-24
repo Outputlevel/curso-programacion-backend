@@ -30,16 +30,23 @@ router.post('/', async (req, res) => {
         });
     }
 
-    const result = await userModel.create({
-        firstName,
-        lastName,
-        email
-    });
-
-    res.status(201).send({
-        status: 'success',
-        payload: result
-    });
+    try {
+        const result = await userModel.create({
+            firstName,
+            lastName,
+            email
+        });
+    
+        res.status(201).send({
+            status: 'success',
+            payload: result
+        });
+    } catch (error) {
+        res.status(400).send({
+            status: 'error',
+            message: error.message.replace(/"/g, "'")
+        });
+    }
 });
 
 router.put('/:id', async (req, res) => {
