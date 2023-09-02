@@ -7,8 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-//const uri = 'mongodb://127.0.0.1:27017/class-16';
-const uri = 'mongodb+srv://joaquincejas2020:CoderHouse2023@cluster0.usycu2f.mongodb.net/test?retryWrites=true&w=majority'
+const uri = 'mongodb://127.0.0.1:27017/class-16';
 //Replace <user> and <password>
 //const uri = 'mongodb+srv://joaquincejas2020:<password>@cluster0.usycu2f.mongodb.net/?retryWrites=true&w=majority';
 mongoose.connect(uri);
