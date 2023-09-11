@@ -1,4 +1,5 @@
 import {Router} from 'express';
+import auth from '../middlewares/auth.js';
 
 const router = Router();
 
@@ -24,16 +25,5 @@ router.get("/logout", (req, res) => {
 router.get("/login", auth, (req, res) => {
     res.send(`login success ${req.session.user}!`);
 });
-
-function auth(req, res, next) {
-    const {username, password} = req.query;
-    if (username !== 'Joaco' || password !== 'Coder2023') {
-        return res.send('login failed');
-    }
-
-    req.session.user = username;
-    req.session.admin = true;
-    return next();
-}
 
 export default router;

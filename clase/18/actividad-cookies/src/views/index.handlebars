@@ -1,1 +1,14 @@
 <h1>Actividad Cookies</h1>
+
+<form method="post" action="/cookies/setCookies">
+    <label for="name">Nombre</label>
+    <input type="text" name="name" id="name">
+
+    <label for="email">Correo Electronico</label>
+    <input type="email" name="email" id="email">
+
+    <button type="submit">Set Cookie</button>
+    <button onclick="getCookies(event);">Get Cookie</button>
+</form>
+
+<script type="text/javascript" src="js/index.js"></script>

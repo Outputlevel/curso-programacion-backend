@@ -7,7 +7,10 @@ import __dirname from './utils/constantsUtil.js';
 
 const app = express();
 
-app.use(cookieParser('CoderPass2023'));
+app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+app.use(cookieParser());
 
 app.engine('handlebars', handlebars.engine());
 app.set('views', `${__dirname}/../views`);
