@@ -25,6 +25,7 @@ router.post("/login", async (req, res) => {
         res.redirect("/");
     } catch (error) {
         req.session.loginFailed = true;
+        req.session.registerSuccess = false;
         res.redirect("/login");
     }
 });
