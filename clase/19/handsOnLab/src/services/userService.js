@@ -1,11 +1,11 @@
 import userModel from "../models/userModel.js";
-import crypto from "crypto";
+import {createHash, isValidPassword} from '../utils/functionsUtil.js';
 
 class UserService {
 
     async createUser(user) {
         try {
-            user.password = this.getHash(user.password);
+            user.password = createHash(user.password);
             return await userModel.create(user);
         } catch (error) {
             throw new Error(error.message.replace(/"/g, "'"));
@@ -16,7 +16,7 @@ class UserService {
         try {
             const user = await userModel.find({email: email});
 
-            if (user.length > 0 && user[0].password === this.getHash(password)) {
+            if (user.length > 0 && isValidPassword(user[0], password)) {
                 return user[0];
             }
             
@@ -27,9 +27,6 @@ class UserService {
         }
     }
 
-    getHash(password) {
-        return crypto.createHash('sha256').update(password).digest('hex');
-    }
 }
 
 export default UserService;
