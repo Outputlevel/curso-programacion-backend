@@ -1,5 +1,5 @@
 {
-  "name": "class25-ejemplo-2",
+  "name": "class25-ejemplo-en-vivo",
   "type": "module",
   "version": "1.0.0",
   "description": "",
@@ -9,9 +9,5 @@
   },
   "keywords": [],
   "author": "Joaquin Cejas",
-  "license": "ISC",
-  "dependencies": {
-    "commander": "^11.0.0",
-    "dotenv": "^16.3.1"
-  }
+  "license": "ISC"
 }

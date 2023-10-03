@@ -1,8 +1,14 @@
 import dotenv from 'dotenv';
+import {Command} from 'commander';
 
-const env = 'DEV';
+const program = new Command();
+
+program.requiredOption('--mode <mode>', 'Mode App', 'develpment');
+program.parse();
+
+const env = program.opts().mode;
 dotenv.config({
-    path: env === 'PROD' ? './.env.prod' : './.env.dev'
+    path: env === 'production' ? './.env.prod' : './.env.dev'
 });
 
 export default {

@@ -1,5 +1,5 @@
 {
-  "name": "ejemplo",
+  "name": "class25-ejemplo",
   "type": "module",
   "version": "1.0.0",
   "description": "",
@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Joaquin Cejas",
   "license": "ISC",
   "dependencies": {
     "commander": "^11.0.0"
