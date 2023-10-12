@@ -1,12 +1,10 @@
 import {Router} from 'express';
-import Contacts from '../dao/mongo/contactsMongo.js';
-import ContactDTO from '../dao/DTOs/contactDTO.js';
+import {contactsService} from '../repositories/index.js';
 
 const router = Router();
-const contactsService = new Contacts();
 
 router.get('/', async (req, res) => {
-    const contacts = await contactsService.get();
+    const contacts = await contactsService.getContacts();
     res.send({
         status: 'success',
         payload: contacts
@@ -14,8 +12,7 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const contact = new ContactDTO(req.body);
-    const result = await contactsService.insert(contact);
+    const result = await contactsService.createContact(req.body);
     res.send({
         status: 'success',
         payload: result
