@@ -1,9 +1,13 @@
 import express from 'express';
+import mongoose from 'mongoose';
+
 import usersRouter from './routes/usersRouter.js';
 import ordersRouter from './routes/ordersRouter.js';
 import businessRouter from './routes/businessRouter.js';
 
 const app = express();
+
+mongoose.connect('mongodb://127.0.0.1:27017/coder-eats');
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
