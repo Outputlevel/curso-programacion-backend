@@ -1,11 +1,32 @@
+import User from '../dao/classes/userDAO.js';
+
+const userService = new User();
+
+const responseError = {
+    status: 'error',
+    error: 'Something went wrong, try again later'
+};
+
 export const getUsers = async (req, res) => {
-    res.send({status: 'success', result: 'getUsers'});
+    const result = await userService.getUsers();
+    
+    if (!result) return res.status(500).send(responseError);
+    res.send({status: 'success', result});
 }
 
 export const getUserById = async (req, res) => {
-    res.send({status: 'success', result: 'getUserById'});
+    const { uid } = req.params;
+
+    const result = await userService.getUserById(uid);
+
+    if (!result) return res.status(500).send(responseError);
+    res.send({status: 'success', result});
 }
 
 export const saveUser = async (req, res) => {
-    res.send({status: 'success', result: 'saveUser'});
+    const user = req.body; //Tarea: validar los campos
+    const result = await userService.saveUser(user);
+
+    if (!result) return res.status(500).send(responseError);
+    res.send({status: 'success', result});
 }
