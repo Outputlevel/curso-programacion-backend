@@ -1,10 +1,29 @@
 import {Router} from 'express';
 import CustomError from '../services/errors/CustomError.js';
-import { generateUserErrorInfo } from '../services/errors/info.js';
+import { generateUserConsultErrorInfo } from '../services/errors/info.js';
 import ErrorCodes from '../services/errors/enums.js';
 const router = Router();
 
 const users = [];
+
+router.get('/:uid', (req, res) => {
+
+    const uid = parseInt(req.params.uid);
+    if (isNaN(uid) || uid < 0) {
+        CustomError.createError({
+            name: 'Invalid Params',
+            cause: generateUserConsultErrorInfo(req.params.uid),
+            message: 'Error to get user by ID',
+            code: ErrorCodes.INVALID_PARAM
+        });
+    }
+
+    const result = users.filter((user) => user.id == req.params.uid);
+    res.send({
+        status: 'success',
+        payload: result
+    });
+});
 
 router.get('/', (req, res) => {
     res.send({
