@@ -1,5 +1,5 @@
 import express from 'express';
-import { addLogger } from './utils/logger.js';
+import { addLogger } from './utils/loggerCustom.js';
 
 const app = express();
 
@@ -9,7 +9,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(addLogger);
 
 app.get('/', (req, res) => {
-    req.logger.warn('Alerta!!');
+    req.logger.warning('Alerta!!');
     res.send({
         message: '¡Prueba Logger!'
     });
