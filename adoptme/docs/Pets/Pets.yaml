@@ -1,0 +1,6 @@
+paths:
+  /api/pets/:
+    get:
+      summary: Obtiene todas las mascotas
+      tags:
+        - Pets

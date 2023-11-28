@@ -1,0 +1,125 @@
+paths:
+  /api/users:
+    get:
+      summary: Obtiene todos los usuarios
+      tags:
+        - Users
+      responses:
+        200:
+          description: Los usuarios fueron obtenidos satisfactoriamente de la base de datos.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/User'
+        500:
+          description: Error interno del servidor, usualmente generado por una query defectuosa.
+      
+  /api/users/{uid}:
+    get:
+      summary: Obtiene un solo usuario por su ID
+      tags:
+        - Users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: ID del usuario
+          schema:
+            $type: String
+      responses:
+        200:
+          description: Usuario encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/User'
+    put:
+      summary: Actualizar un usuario por su ID
+      tags:
+        - Users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: ID del usuario
+          schema:
+            $type: String
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/requestBodies/updateUser'
+    delete:
+      summary: Eliminar un usuario por su ID
+      tags:
+        - Users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: ID del usuario
+          schema:
+            $type: String
+      responses:
+        200:
+          description: Usuario eliminado correctamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: String
+                    example: success
+                  message:
+                    type: String
+                    example: User deleted
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: ID autogenerado por MongoDB
+        first_name:
+          type: String
+          description: Nombre del usuario
+        last_name:
+          type: String
+          description: Apellido del usuario
+        email:
+          type: String
+          description: Correo del usuario
+        password:
+          type: String
+          description: Contraseña hasheada del usuario
+      example:
+        _id: 6546924fc61d101fcba36f42
+        first_name: Joaco
+        last_name: Cejas
+        email: joaco@coder.com
+        password: $2b$10$.VI4uWDalVwpDh2/VA5D.OZy28UVWjpf5gaRzwfMXJidPLgWzynjm
+  requestBodies:
+    updateUser:
+      type: object
+      properties:
+        first_name:
+          type: String
+          description: Nombre del usuario
+        last_name:
+          type: String
+          description: Apellido del usuario
+        email:
+          type: String
+          description: Correo del usuario
+        password:
+          type: String
+          description: Contraseña hasheada del usuario
+      example:
+        first_name: Fernando
+        last_name: Orduna
+        email: ferorduna@coder.com
