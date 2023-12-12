@@ -1,26 +1,31 @@
 import { Controller, Query, Get, Post, Body, Patch, Param, Delete, HttpException, HttpStatus } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(
+    private readonly usersService: UsersService,
+    private config: ConfigService
+  ) {}
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
+  async create(@Body() createUserDto: CreateUserDto) {
     if (!createUserDto.first_name || !createUserDto.last_name || !createUserDto.email || !createUserDto.password) {
       throw new HttpException('Incomplete values', HttpStatus.BAD_REQUEST);
     }
 
-    return { status: 'success', payload: this.usersService.create(createUserDto) };
+    const payload = await this.usersService.create(createUserDto);
+    return { status: 'success', payload };
   }
 
   @Get()
-  findAll(@Query('limit') limit) {
+  async findAll(@Query('limit') limit) {
     //Ejemplo limito la cantidad de usuarios que se muestran
-    console.log(limit);
-    const users = this.usersService.findAll();
+    console.log(this.config.get<string>('PAPA'));
+    const users = await this.usersService.findAll();
     return {status: 'success', users}
   }
 

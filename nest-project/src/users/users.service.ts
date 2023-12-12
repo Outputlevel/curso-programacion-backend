@@ -33,12 +33,12 @@ export class UsersService {
     return 'Created user success';
   }
   */
-  create(createUserDto: CreateUserDto) {
-    return this.usersModel.create(createUserDto);
+  async create(createUserDto: CreateUserDto) {
+    return await this.usersModel.create(createUserDto);
   }
 
-  findAll() {
-    return this.users;
+  async findAll() {
+    return await this.usersModel.find();
   }
 
   findOne(id: number) {
