@@ -13,7 +13,7 @@ export class UsersController {
       throw new HttpException('Incomplete values', HttpStatus.BAD_REQUEST);
     }
 
-    return { status: 'success', message: this.usersService.create(createUserDto) };
+    return { status: 'success', payload: this.usersService.create(createUserDto) };
   }
 
   @Get()
